@@ -1,5 +1,8 @@
+let language = 'it';
+let length = 5;
 
-let extractedWord = "qualsiasi";
+randWord(language, length);
+let extractedWord = sessionStorage.getItem('word');
 shuffle(extractedWord);
 
 // Get the input elements
@@ -54,4 +57,14 @@ function shuffle(extractedWord) {
     } else {
         shuffle(extractedWord);
     }
+}
+
+function randWord(ling,lunghezza){
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.onload = function() {
+        let parola = JSON.parse(this.responseText);
+        sessionStorage.setItem('word',parola);
+       }
+    xmlhttp.open("GET", "https://www.defio.info/REST/lingue/entrambe.php?lingua="+ling+"&lun="+lunghezza);
+    xmlhttp.send();
 }
