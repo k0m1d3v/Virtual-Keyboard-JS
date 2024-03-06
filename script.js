@@ -17,7 +17,7 @@ checkWord = () => {
         updateScore();
         newWord();
     } else {
-        alert('Riprova!');
+        alert('Riprova!'); // TODO: Replace with some css effect
     }
 }
 
