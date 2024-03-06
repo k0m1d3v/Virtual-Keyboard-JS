@@ -1,9 +1,9 @@
+let timerInterval = null; // Initialize timerInterval to null
+
 let language = 'it';
 let length = 5;
 let score = 0;
 sessionStorage.setItem('score', score);
-
-newWord();
 
 // Get the input elements
 const inputs = document.querySelectorAll('input[type="button"]');
@@ -84,4 +84,37 @@ function newWord() {
     randWord(language, length);
     extractedWord = sessionStorage.getItem('word');
     shuffle(extractedWord);
+    startTimer();
 }
+
+let timeLeft = 60; // Set the initial time (in seconds)
+
+// Get the HTML element where you want to display the timer
+const timerElement = document.getElementById('timer'); 
+
+function startTimer() {
+    // Clear any existing timer
+    if (timerInterval) {
+        clearInterval(timerInterval);
+    }
+
+    timeLeft = 60; // Reset the time
+
+    // Update the timer every second
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        timerElement.textContent = timeLeft;
+
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval); // Stop the timer when it reaches 0
+            
+            // You can add code here to handle what happens when the timer runs out
+            alert('Time is up!'); // TODO: Replace with some css effect
+            
+            newWord(); // Generate a new word
+            startTimer(); // Restart the timer
+        }
+    }, 1000);
+}
+
+newWord();

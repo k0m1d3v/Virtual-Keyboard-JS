@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>keyboard</title>
+    <title>game</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="keyboard">
         
-        <h1 id="score">Score: <span id="scoreDisplay">0</span></h1>
+        <h1 class="scoreAndTimer">Score: <span id="scoreDisplay">0</span></h1>
 
         <input type="text" id="wordShuffled" placeholder="Generated and shuffled word" disabled>
         <input type="text" id="wordInput" placeholder="Type the word" disabled>
@@ -54,6 +54,8 @@
                 <td><input class="key" type="button" value="&#x27A1;"></td>
             </tr>
         </table>
+
+        <h1 class="scoreAndTimer">Timer: <span id="timer">0</span></h1>
     </div>
 
     <script src="script.js"></script>
